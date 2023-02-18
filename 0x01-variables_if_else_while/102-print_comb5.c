@@ -1,48 +1,44 @@
 #include <stdio.h>
+
 /**
  * main - entry point
  *
- * Description: print all possible combinations of two two-digits
- * Return: always 0
+ * Description: print four digit combinations
+ * Return: always 0 (Success)
  */
-
 int main(void)
 {
-	int n1 = 0;
-	int n2 = 0;
-	int n3 = 0;
-	int n4;
+	int l1, l2, l3, l4, i;
 
-	while (n1 <= 9)
+	l1 = '0';
+	while (l1 <= '9')
 	{
-		while (n2 <= 8)
+		l2 = '0';
+		while (l2 <= '9')
 		{
-			while (n3 <= 9)
+			l3 = l1, i = 1;
+			while (l3 <= '9')
 			{
-				n4 = n3 + 1;
-				while (n4 <= 9)
+				if (i)
+					l4 = l2 + 1, i = 0;
+				else
+					l4 = '0';
+				while (l4 <= '9')
 				{
-					putchar(n1 + '0');
-					putchar(n2 + '0');
+					putchar(l1);
+					putchar(l2);
 					putchar(' ');
-					putchar(n3 + '0');
-					putchar(n4 + '0');
-					if (n1 != 9 || n2 != 8 || n3 != 9 || n4 != 9)
-					{
-						putchar(',');
-						putchar(' ');
-					}
-					++n4;
+					putchar(l3);
+					putchar(l4);
+					if (l1 != '9' || l2 != '8' || l3 != '9' || l4 != '9')
+						putchar(','), putchar(' ');
+					l4++;
 				}
-				++n3;
+				l3++;
 			}
-			++n2;
-			n3 = 0;
-			n4 = n4 + 1;
+			l2++;
 		}
-		++n1;
-		n2 = 0;
-		n3 = n3 + 1;
+		l1++;
 	}
 	putchar('\n');
 	return (0);
