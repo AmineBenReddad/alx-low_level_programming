@@ -15,11 +15,13 @@ int main(void)
 
 	while (n1 <= 9)
 	{
+		n2 = n1 + 1;
 		while (n2 <= 8)
 		{
+			n3 = n2 + 1;
 			while (n3 <= 9)
 			{
-				n4 = n2 + 1;
+				n4 = n3 + 1;
 				while (n4 <= 9)
 				{
 					putchar(n1 + '0');
@@ -37,7 +39,6 @@ int main(void)
 				++n3;
 			}
 			++n2;
-			n3 = 0;
 		}
 		++n1;
 	}
