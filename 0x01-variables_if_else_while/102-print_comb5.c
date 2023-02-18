@@ -19,7 +19,7 @@ int main(void)
 		{
 			while (n3 <= 9)
 			{
-				n4 = n1 + 1;
+				n4 = n2 + 1;
 				while (n4 <= 9)
 				{
 					putchar(n1 + '0');
