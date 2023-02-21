@@ -1,11 +1,11 @@
 #include "main.h"
+
 /**
- * print_times_table - prints time table n times
+ * print_times_table - print times table n times
+ * @n: number of times to print times table
  *
- * @n: number of tables times
  * Return: void
  */
-
 void print_times_table(int n)
 {
 	int i, j, res, n1, n2, n3;
@@ -21,6 +21,7 @@ void print_times_table(int n)
 		while (j <= n)
 		{
 			res = i * j;
+
 			n1 = res / 100;
 			if (n1 != 0)
 				n2 = (res / 10) % 10;
