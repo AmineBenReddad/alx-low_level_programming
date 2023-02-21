@@ -1,50 +1,41 @@
-#include "main.h"
+#include"main.h"
 
 /**
- * print_times_table - print times table n times
- * @n: number of times to print times table
+ * print_times_table - prints time table of n
  *
- * Return: void
- */
+ * @n: takes number input
+*/
+
 void print_times_table(int n)
 {
-	int i, j, res, n1, n2, n3;
+	int prod, mult, num;
 
-	if (n < 0 || n > 15)
-		return;
-
-	i = 0;
-	while (i <= n)
+	if (n <= 15 && n >= 0)
 	{
-		_putchar(0 + '0');
-		j = 1;
-		while (j <= n)
+		for (num = 0; num <= n; ++num)
 		{
-			res = i * j;
-
-			n1 = res / 100;
-			if (n1 != 0)
-				n2 = (res / 10) % 10;
-			else
-				n2 = res / 10;
-			n3 = res % 10;
-
-			_putchar(',');
-			_putchar(' ');
-			if (n1 != 0)
-				_putchar(n1 + '0');
-			else
+			_putchar(48);
+			for (mult = 1; mult <= n; ++mult)
+			{
+				_putchar(',');
 				_putchar(' ');
 
-			if (n2 != 0)
-				_putchar(n2 + '0');
-			else
-				_putchar(' ');
+				prod = num * mult;
 
-			_putchar(n3 + '0');
-			j++;
+				if (prod <= 9)
+					_putchar(' ');
+				if (prod <= 99)
+					_putchar(' ');
+
+				if (prod >= 100)
+				{
+					_putchar((prod / 100) + 48);
+					_putchar((prod / 10) % 10 + 48);
+				} else if (prod <= 99 && prod >= 10)
+					_putchar((prod / 10) + 48);
+				_putchar((prod % 10) + 48);
+			}
+			_putchar('\n');
 		}
-		_putchar('\n');
-		i++;
 	}
 }
