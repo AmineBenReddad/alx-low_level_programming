@@ -1,29 +1,34 @@
 #include "main.h"
 
 /**
- * print_number - check the code
- *
- * @n: a given number
- *
- * Return: Always 0.
+ * print_number - print a given number using _putchar
+ * @n: number to be printed
+ * Return: void
  */
 void print_number(int n)
 {
-	int mil;
-	int cent;
-	int tens;
-	int last_digit;
+	int i, box;
 
-	if (n / 1000 > 1)
-		mil = n / 1000;
-	if (n / 100 > 1)
-		cent = n / 100;
-	if (n / 10 > 1)
-		tens = n / 10;
-	last_digit = n % 10;
-		_putchar(mil + '0');
-	_putchar(cent + '0');
-	_putchar(tens + '0');
-	_putchar(last_digit + '0');
-	_putchar('\n');
+	if (n < 0)
+	{
+		_putchar('-');
+		n *= -1;
+	}
+
+	i = 1;
+	box = n;
+	while (box > 9)
+	{
+		i *= 10;
+		box /= 10;
+	}
+
+	while (i > 0)
+	{
+		box = n;
+		box /= i;
+		box %= 10;
+		_putchar(box + '0');
+		i /= 10;
+	}
 }
