@@ -3,6 +3,8 @@
 
 #include <unistd.h>
 
+char *_strcat(char *dest, *src);
+
 
 
 #endif
