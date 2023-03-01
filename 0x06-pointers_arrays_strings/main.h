@@ -3,7 +3,7 @@
 
 #include <unistd.h>
 
-char *_strcat(char *dest, *src);
+char *_strcat(char *dest, char *src);
 
 
 
