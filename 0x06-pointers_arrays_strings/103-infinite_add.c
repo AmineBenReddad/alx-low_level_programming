@@ -2,12 +2,11 @@
 #include <stdio.h>
 /**
  * infinite_add - adds two numbers
- *
- * @n1: number one
- * @n2: number two
- * @r: buffer that the function will use to store the result
- * @size_r: buffer size
- * Return: the pointer to dest
+ * @n1: number one.
+ * @n2: number two.
+ * @r: buffer that the function will use to store the result.
+ * @size_r: buffer size:
+ * Return: the pointer to dest.
  */
 
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
@@ -22,7 +21,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		bg = c1;
 	else
 		bg = c2;
-	if (size_r <= bg +1)
+	if (size_r <= bg + 1)
 		return (0);
 	r[bg + 1] = '\0';
 	c1--, c2--, size_r--;
@@ -35,7 +34,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		else
 			add = 0;
 		if (op > 0)
-			*(r + bg) = (op % 10) + 48;
+		*(r + bg) = (op % 10) + 48;
 		else
 			*(r + bg) = '0';
 		if (c1 > 0)
