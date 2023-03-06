@@ -2,8 +2,8 @@
 /**
  * _strspn - entry point
  *
- * @s: initial string
- * @accept: string for comparison
+ * @s: input
+ * @accept: input
  * Return: number of bytes
  */
 
