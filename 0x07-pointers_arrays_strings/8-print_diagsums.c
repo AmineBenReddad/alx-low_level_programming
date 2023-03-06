@@ -3,7 +3,7 @@
 /**
  * print_diagsums - prints sum of diagonals of matrix
  *
- * @a: 2D array of integers "Matrix"
+ * @a: 2D array of integers (Matrix)
  * @size: size of the matrix
  * Return: void
  */
