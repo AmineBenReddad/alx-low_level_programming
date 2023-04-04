@@ -1,72 +1,54 @@
 #include "lists.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
- * free_listp2 - frees a linked list
- * @head: head of a list.
+ * is_visited2 - check in adress has been visited
+ * @visited: array of visited adresses
+ * @p: adress to be checked
  *
- * Return: no return.
+ * Return: 1 (Visited) | 0 (Not Visited)
  */
-void free_listp2(listp_t **head)
+int is_visited2(void **visited, void *p)
 {
-	listp_t *temp;
-	listp_t *curr;
+	int i;
 
-	if (head != NULL)
-	{
-		curr = *head;
-		while ((temp = curr) != NULL)
-		{
-			curr = curr->next;
-			free(temp);
-		}
-		*head = NULL;
-	}
+	for (i = 0; visited[i]; i++)
+		if (p == visited[i])
+			return (1);
+	return (0);
 }
 
 /**
- * free_listint_safe - frees a linked list.
- * @h: head of a list.
+ * free_listint_safe - frees listint_t list
+ * @h: head node
+ * Description: frees a listint_t list including lists with
+ * loops, avoiding endless repetition
  *
- * Return: size of the list that was freed.
+ * Return: size of free'd list
  */
 size_t free_listint_safe(listint_t **h)
 {
-	size_t nnodes = 0;
-	listp_t *hptr, *new, *add;
-	listint_t *curr;
+	void *visited[200];
+	listint_t *tmp, *next;
+	size_t i;
 
-	hptr = NULL;
-	while (*h != NULL)
+
+	if (!h)
+		return (0);
+
+	for (i = 0; i < 200; i++)
+		visited[i] = 0;
+	tmp = *h, i = 0;
+	while (tmp)
 	{
-		new = malloc(sizeof(listp_t));
-
-		if (new == NULL)
-			exit(98);
-
-		new->p = (void *)*h;
-		new->next = hptr;
-		hptr = new;
-
-		add = hptr;
-
-		while (add->next != NULL)
-		{
-			add = add->next;
-			if (*h == add->p)
-			{
-				*h = NULL;
-				free_listp2(&hptr);
-				return (nnodes);
-			}
-		}
-
-		curr = *h;
-		*h = (*h)->next;
-		free(curr);
-		nnodes++;
+		if (is_visited2(visited, (void *)tmp))
+			break;
+		visited[i++] = (void *)tmp;
+		next = tmp->next;
+		free(tmp);
+		tmp = next;
 	}
-
-	*h = NULL;
-	free_listp2(&hptr);
-	return (nnodes);
+	*h = 0;
+	return (i);
 }
